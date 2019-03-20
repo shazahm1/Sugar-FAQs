@@ -1,0 +1,182 @@
+/* Editable Accordion Styles */
+.sugar-faqs-wrap { 
+	color:#666; 
+	font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; 
+	font-size:12px; 
+	line-height:17px;
+	margin:0;
+	width:auto;
+	display: none;
+}
+.sugar-faqs-wrap h3.trigger { 
+	/*background:url(img/bg_header.png) no-repeat 0 0; */
+	background: #f0f3f6 url(img/bg.gif) repeat-x;
+	border-left: 1px solid #e0e3e7;
+	border-right: 1px solid #e0e3e7;
+	color:#979fad; 
+	cursor:pointer;
+	font-size:13px; 
+	font-weight:bold;
+	height: 36px;
+	margin: 0!important;
+	line-height:36px!important;
+	text-shadow:0 1px 0 #fff;
+	position: relative;
+	
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+}
+
+.sugar-faqs-wrap .active-faq h3.trigger {
+	background-position:0 -36px;
+	
+	border-radius: 3px 3px 0 0;
+	-moz-border-radius:3px 3px 0 0;
+	-webkit-border-radius:3px 3px 0 0;
+}
+.sugar-faqs-wrap .trigger-end	{
+	display: block;
+	position: absolute;
+	background: url(img/triangle.gif) no-repeat;
+	width: 20px;
+	height: 11px;
+	right: 10px;
+	top: 15px;
+}
+.sugar-faqs-wrap .active-faq .trigger-end	{
+	background-position: 0 -11px;
+}
+.sugar-faqs-wrap .icon {
+	display:block;
+	float:left;
+	height:36px;
+	margin-right:8px;
+	width:40px;
+	border-right: 1px solid #dce0e4;
+}
+.sugar-faqs-wrap .icon-image {
+	background:url(img/icon_settings.png) no-repeat 0 0;
+	height: 20px;
+	width: 21px;
+	margin: 8px auto 0;
+	display: block;
+}
+.sugar-faqs-wrap .yellow .icon-image { background-position: 0 -20px; }
+.sugar-faqs-wrap .faq-section .faq-content {  
+	background-color:#f0f3f6;
+	border-left:1px solid #d4d8dd;
+	border-right:1px solid #d4d8dd;
+	height:auto;
+	overflow:hidden;
+	padding: 0 10px;
+	
+	border-radius:0 0 3px 3px;
+	-moz-border-radius:0 0 3px 3px;
+	-webkit-border-radius:0 0 3px 3px;
+	
+	transition:height 0.3s ease;
+	-o-transition:height 0.3s ease;
+	-moz-transition:height 0.3s ease;
+	-webkit-transition:height 0.3s ease;
+}
+
+.sugar-faqs-wrap .faq-section .faq-content p	{
+	margin: 10px 0;
+}
+.sugar-faqs-wrap .active-faq .faq-content {
+	border-bottom:1px solid #d4d8dd;
+	padding:10px;
+}
+.sugar-faqs-wrap .faq-topic	{
+	margin: 20px 0!important;
+	border-bottom: 1px solid #d4d8dd;
+	padding-bottom: 8px;
+}
+
+/**********
+colors
+**********/
+/*light*/
+.sugar-faqs-wrap .light h3.trigger	{ background: #f0f3f6 url(img/bg_light.gif) repeat-x; }
+.sugar-faqs-wrap .light.faq-section .faq-content p		{ color: dimGray;}
+/*gary*/
+.sugar-faqs-wrap .gray h3.trigger	{ background: #f0f3f6 url(img/bg_gray.gif) repeat-x;}
+.sugar-faqs-wrap .gray.faq-section .faq-content		{ background: #c2c7cc;}
+.sugar-faqs-wrap .gray.faq-section .faq-content p		{ color: dimGray;}
+.sugar-faqs-wrap .gray .icon	{ border-color: #b6bbc0;}
+.sugar-faqs-wrap .gray .trigger-end	{ background-position: -20px 0; }
+.sugar-faqs-wrap .gray.active-faq .trigger-end	{ background-position: -20px -11px; }
+
+
+/*dark*/
+.sugar-faqs-wrap .dark h3.trigger	{ 
+	background: #0a0b0a url(img/bg_dark.gif) repeat-x; border-color: #646566; color: #ccc!important;
+	text-shadow:0 1px 0 #646566;
+}
+.sugar-faqs-wrap .dark.faq-section .faq-content		{ background: #646566; border-color: #646566; color: #ccc;}
+.sugar-faqs-wrap .dark.faq-section .faq-content p		{ color: #ccc;}
+.sugar-faqs-wrap .dark .icon	{ border-color: #646566;}
+.sugar-faqs-wrap .dark .trigger-end	{ background-position: -40px 0; }
+.sugar-faqs-wrap .dark.active-faq .trigger-end	{ background-position: -40px -11px; }
+
+/*black*/
+.sugar-faqs-wrap .black h3.trigger	{ 
+	background: #f0f3f6 url(img/bg_black.gif) repeat-x; border-color: #000; color: #f0f0f0!important;
+	text-shadow:0 1px 0 #333;
+}
+.sugar-faqs-wrap .black.faq-section .faq-content		{ background: #0a0b0a; border-color: #000; color: #ccc;}
+.sugar-faqs-wrap .black.faq-section .faq-content p		{ color: #ccc;}
+.sugar-faqs-wrap .black .icon	{ border-color: #000;}
+.sugar-faqs-wrap .black .trigger-end	{ background-position: -60px 0; }
+.sugar-faqs-wrap .black.active-faq .trigger-end	{ background-position: -60px -11px; }
+
+/*blue*/
+.sugar-faqs-wrap .blue h3.trigger	{ 
+	background: #f0f3f6 url(img/bg_blue.gif) repeat-x; border-color: #22506d; color: #f0f0f0!important;
+	text-shadow:0 1px 0 #333;
+}
+.sugar-faqs-wrap .blue.faq-section .faq-content		{ background: #22506d; border-color: #22506d; color: #ccc;}
+.sugar-faqs-wrap .blue.faq-section .faq-content p		{ color: #ccc;}
+.sugar-faqs-wrap .blue .icon	{ border-color: #22506d;}
+.sugar-faqs-wrap .blue .trigger-end	{ background-position: -80px 0; }
+.sugar-faqs-wrap .blue.active-faq .trigger-end	{ background-position: -80px -11px; }
+
+/*red*/
+.sugar-faqs-wrap .red h3.trigger	{ 
+	background: #f0f3f6 url(img/bg_red.gif) repeat-x; border-color: #790d0d; color: #f0f0f0!important;
+	text-shadow:0 1px 0 #333;
+}
+.sugar-faqs-wrap .red.faq-section .faq-content		{ background: #790d0d; border-color: #790d0d; color: #ccc;}
+.sugar-faqs-wrap .red.faq-section .faq-content p		{ color: #ccc;}
+.sugar-faqs-wrap .red .icon	{ border-color: #790d0d;}
+.sugar-faqs-wrap .red .trigger-end	{ background-position: -100px 0; }
+.sugar-faqs-wrap .red.active-faq .trigger-end	{ background-position: -100px -11px; }
+
+/*green*/
+.sugar-faqs-wrap .green h3.trigger	{ 
+	background: #0d801a url(img/bg_green.gif) repeat-x; border-color: #095612; color: #f0f0f0!important;
+	text-shadow:0 1px 0 #333;
+}
+.sugar-faqs-wrap .green.faq-section .faq-content		{ background: #095612; border-color: #095612; color: #ccc;}
+.sugar-faqs-wrap .green.faq-section .faq-content p	{ color: #ccc;}
+.sugar-faqs-wrap .green .icon	{ border-color: #095612;}
+.sugar-faqs-wrap .green .trigger-end	{ background-position: -120px 0; }
+.sugar-faqs-wrap .green.active-faq .trigger-end	{ background-position: -120px -11px; }
+
+
+/*yellow*/
+.sugar-faqs-wrap .yellow h3.trigger	{ 
+	background: #0d801a url(img/bg_yellow.gif) repeat-x; border-color: #bd9417; color: #fff!important;
+	text-shadow:0 1px 0 #bd9417;
+}
+.sugar-faqs-wrap .yellow.faq-section .faq-content		{ background: #bd9417; border-color: #bd9417; color: #fff;}
+.sugar-faqs-wrap .yellow.faq-section .faq-content p		{ color: #fff;}
+.sugar-faqs-wrap .yellow .icon	{ border-color: #bd9417;}
+.sugar-faqs-wrap .yellow .trigger-end	{ background-position: -140px 0; }
+.sugar-faqs-wrap .yellow.active-faq .trigger-end	{ background-position: -140px -11px; }
+
+
+/**********
+end colors
+**********/
