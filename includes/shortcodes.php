@@ -152,7 +152,7 @@
 
 							$content .= get_the_title() . '<span class="trigger-end"></span>';
 
-							$content .= '</h3>';
+							//$content .= '</h3>';
 							$content .= sprintf(
 								'</%1$s>',
 								in_array( $atts['title_tag'], array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ) ) ? esc_attr( $atts['title_tag'] ) : 'h3'
