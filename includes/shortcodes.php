@@ -80,8 +80,8 @@
 							$wp_syntax_applied = do_shortcode( wptexturize( wpautop( $wp_syntax_applied ) ) );
 							$wp_syntax_applied = WP_Syntax::afterFilter( $wp_syntax_applied );
 							$content .= $wp_syntax_applied;
-							$content .= '<p style="margin-bottom: 0px; text-align: right;"><a title="Permanlink" href="' . get_permalink(
-								) . '">Permanlink</a>';
+							$content .= '<p style="margin-bottom: 0px; text-align: right;"><a title="Permalink" href="' . get_permalink(
+								) . '">Permalink</a>';
 							$content .= ' | ';
 
 							$num_comments = get_comments_number(); // get_comments_number returns only a numeric value
@@ -165,7 +165,7 @@
 								$wp_syntax_applied = WP_Syntax::afterFilter( $wp_syntax_applied );
 								$content .= $wp_syntax_applied;
 
-								$content .= '<p style="' . ( 'true' == $atts['accordion'] ? 'margin-bottom: 0px; ' : '' ) . 'text-align: right;"><a title="Permanlink" href="' . get_permalink() . '">Permanlink</a>';
+								$content .= '<p style="' . ( 'true' == $atts['accordion'] ? 'margin-bottom: 0px; ' : '' ) . 'text-align: right;"><a title="Permalink" href="' . get_permalink() . '">Permalink</a>';
 								$content .= ' | ';
 
 								$num_comments = get_comments_number(); // get_comments_number returns only a numeric value
@@ -214,7 +214,7 @@
 					$wp_syntax_applied = do_shortcode( wptexturize( wpautop( $wp_syntax_applied ) ) );
 					$wp_syntax_applied = WP_Syntax::afterFilter( $wp_syntax_applied );
 					$content .= $wp_syntax_applied;
-					$content .= '<p style="margin-bottom: 0px; text-align: right;"><a title="Permanlink" href="' . get_permalink() . '">Permanlink</a>';$content .= ' | ';
+					$content .= '<p style="margin-bottom: 0px; text-align: right;"><a title="Permalink" href="' . get_permalink() . '">Permalink</a>';$content .= ' | ';
 
 					$num_comments = get_comments_number(); // get_comments_number returns only a numeric value
 
