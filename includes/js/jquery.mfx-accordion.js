@@ -4,6 +4,17 @@
  * Description: A jQuery accordion that uses CSS3 transitions for better browsers with a jQuery animation fallback for Internet Explorer
  */
 
+
+jQuery.browser = {};
+(function () {
+    jQuery.browser.msie = false;
+    jQuery.browser.version = 0;
+    if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+        jQuery.browser.msie = true;
+        jQuery.browser.version = RegExp.$1;
+    }
+})();
+
 (function($) {
 	$.fn.mfxAccordion = function(options) {
 		// Set up the options
