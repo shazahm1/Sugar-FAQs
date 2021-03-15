@@ -94,7 +94,7 @@ function custom_rewrites($translation, $text, $domain) {
 		return $translation;
 	}
 
-	$translations = &get_translations_for_domain($domain);
+	$translations = get_translations_for_domain($domain);
 	$translation_array = array();
 
 	switch ($post->post_type) {
