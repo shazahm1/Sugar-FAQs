@@ -51,8 +51,6 @@ class sf_topics_widget extends WP_Widget {
 	function widget($args, $instance) {
 		extract( $args );
 		$title 		= apply_filters('widget_title', $instance['title']);
-		$show_count = $instance['show_count'];
-		$hierarchical = $instance['hierarchical'];
 		?>
 			  <?php echo $before_widget; ?>
 				  <?php if ( $title )
