@@ -9,7 +9,7 @@ Author URI: http://pippinsplugins.com
 */
 
 /************************************
-gloabl variables
+global variables
 ************************************/
 
 $sf_version = '1.2.3';
