@@ -89,13 +89,13 @@ class sf_topics_widget extends WP_Widget {
 
 		global $topics;
 
-        $title = esc_attr($instance['title']);
+        $title = $instance['title'];
 		$show_count	= $instance['show_count'];
 		$hierarchical	= $instance['hierarchical'];
         ?>
          <p>
           <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
-          <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
+          <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
         </p>
 		<p>
           <input id="<?php echo $this->get_field_id('show_count'); ?>" name="<?php echo $this->get_field_name('show_count'); ?>" type="checkbox" value="1" <?php checked( '1', $show_count ); ?>/>
