@@ -16,7 +16,7 @@ $sf_version = '1.2.3';
 
 $sfBaseDir = WP_PLUGIN_URL . '/' . str_replace(basename( __FILE__), "" ,plugin_basename(__FILE__));
 
-$sf_options = get_option( 'sf_settings' );
+$sf_options = sf_get_options();
 
 $sf_load_scripts = false;
 
@@ -36,4 +36,30 @@ if(is_admin()) {
 	include_once('includes/settings.php');
 	include_once('includes/metabox.php');
 	include_once('includes/help.php');
+}
+
+/**
+ * @return array
+ */
+function sf_get_options() {
+
+	$defaults = array(
+		'style'               => 'default',
+		'width'               => '',
+		'icon'                => '0',
+		'single_open'         => '1',
+		'email_notifications' => '0',
+		'order'               => 'title',
+		'direction'           => 'ASC',
+		'css'                 => '',
+	);
+
+	$sf_options = get_option( 'sf_settings', $defaults );
+
+	if ( ! is_array( $sf_options ) ) {
+
+		return $defaults;
+	}
+
+	return wp_parse_args( $sf_options, $defaults );
 }
