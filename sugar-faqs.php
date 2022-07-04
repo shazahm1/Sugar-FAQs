@@ -47,6 +47,18 @@ class sf_topics_widget extends WP_Widget {
 		parent::__construct( '', 'FAQ Topics' );
 	}
 
+	/**
+	 * @return array{title: string, show_count: string, hierarchical: string}
+	 */
+	function get_defaults() {
+
+		return array(
+			'title'        => '',
+			'show_count'   => '0',
+			'hierarchical' => '0',
+		);
+	}
+
 	/** @see WP_Widget::widget */
 	function widget($args, $instance) {
 		extract( $args );
