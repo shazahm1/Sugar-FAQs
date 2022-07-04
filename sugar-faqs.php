@@ -111,7 +111,10 @@ class sf_topics_widget extends WP_Widget {
 
 } // end sf_topics_widget class
 
-// register Topics widget
-add_action('widgets_init', create_function('', 'return register_widget("sf_topics_widget");'));
-
-//add_filter('widget_text', 'do_shortcode');
+// Register Topics widget.
+add_action(
+	'widgets_init',
+	static function() {
+		register_widget( 'sf_topics_widget' );
+	}
+);
