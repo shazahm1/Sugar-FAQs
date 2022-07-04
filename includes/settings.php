@@ -105,4 +105,3 @@ function sf_settings_menu() {
 	add_submenu_page('options-general.php', 'FAQs Settings', 'FAQs Settings','manage_options', 'sugar-faqs-settings', 'sf_settings_page');
 }
 add_action('admin_menu', 'sf_settings_menu');
-?>
