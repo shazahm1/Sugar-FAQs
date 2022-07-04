@@ -43,8 +43,8 @@ register the topics widget
 class sf_topics_widget extends WP_Widget {
 
 	/** constructor */
-	function sf_topics_widget() {
-		parent::WP_Widget(false, $name = 'FAQ Topics');
+	function __construct() {
+		parent::__construct( '', 'FAQ Topics' );
 	}
 
 	/** @see WP_Widget::widget */
