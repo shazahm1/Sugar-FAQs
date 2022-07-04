@@ -98,6 +98,8 @@ class sf_topics_widget extends WP_Widget {
 	/** @see WP_Widget::form */
 	function form($instance) {
 
+		$instance = wp_parse_args( $instance, $this->get_defaults() );
+
 		$title        = $instance['title'];
 		$show_count   = $instance['show_count'];
 		$hierarchical = $instance['hierarchical'];
