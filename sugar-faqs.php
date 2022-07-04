@@ -75,12 +75,15 @@ class sf_topics_widget extends WP_Widget {
 	}
 
 	/** @see WP_Widget::update */
-	function update($new_instance, $old_instance) {
+	function update( $new_instance, $old_instance ) {
+
 		global $posttypes;
-		$instance = $old_instance;
-		$instance['title'] = strip_tags($new_instance['title']);
-		$instance['show_count'] = $new_instance['show_count'];
+
+		$instance                 = $old_instance;
+		$instance['title']        = strip_tags( $new_instance['title'] );
+		$instance['show_count']   = $new_instance['show_count'];
 		$instance['hierarchical'] = $new_instance['hierarchical'];
+
 		return $instance;
 	}
 
