@@ -5,42 +5,33 @@
 
 		$sf_load_scripts = TRUE;
 
-		/**
-		 * @var bool   $topicalize
-		 * @var string $topic
-		 * @var int    $width
-		 * @var bool   $hierarchical
-		 * @var string $color
-		 */
-		extract(
-			$atts = shortcode_atts(
-				array(
-					'topicalize'   => 'false',
-					'topic'        => '',
-					'width'        => '',
-					'hierarchical' => 'false',
-					'color'        => '',
-					'accordion'    => 'true',
-					'topic_tag'    => 'h2',
-					'title_tag'    => 'h3',
-				),
-				$atts
-			)
+		$atts = shortcode_atts(
+			array(
+				'topicalize'   => 'false',
+				'topic'        => '',
+				'width'        => '',
+				'hierarchical' => 'false',
+				'color'        => '',
+				'accordion'    => 'true',
+				'topic_tag'    => 'h2',
+				'title_tag'    => 'h3',
+			),
+			$atts
 		);
 
-		if ( $width == '' ) {
+		if ( $atts['width'] == '' ) {
 			$faqs_width = $sf_options['width'];
 		} else {
-			$faqs_width = $width;
+			$faqs_width = $atts['width'];
 		}
-		if ( $color == '' ) {
+		if ( $atts['color'] == '' ) {
 			$faqs_color = $sf_options['style'];
 		} else {
-			$faqs_color = $color;
+			$faqs_color = $atts['color'];
 		}
 
-		if ( $topic && $hierarchical == 'false' ) {
-			$topicalize = 'false';
+		if ( $atts['topic'] && $atts['hierarchical'] == 'false' ) {
+			$atts['topicalize'] = 'false';
 		}
 		if ( ! empty( $faqs_width ) || $sf_options['icon'] == TRUE ) {
 			$content .= '<style type="text/css">';
@@ -52,7 +43,7 @@
 			}
 			$content .= '</style>';
 		}
-		if ( $topicalize == 'true' && $hierarchical == 'false' ) {
+		if ( $atts['topicalize'] == 'true' && $atts['hierarchical'] == 'false' ) {
 
 			$content .= '<div class="sugar-faqs-wrap">';
 			$terms = get_terms( 'faq_topics', $atts );
@@ -111,11 +102,11 @@
 			endif;
 			$content .= '</div>';
 
-		} elseif ( $topicalize == 'true' && $hierarchical == 'true' ) {
+		} elseif ( $atts['topicalize'] == 'true' && $atts['hierarchical'] == 'true' ) {
 
 			if ( 'true' == $atts['accordion'] ) $content .= '<div class="sugar-faqs-wrap">';
 
-			$topic_id  = get_term_by( 'slug', $topic, 'faq_topics' );
+			$topic_id  = get_term_by( 'slug', $atts['topic'], 'faq_topics' );
 			$term_args = array( 'child_of' => $topic_id->term_id );
 			$terms     = get_terms( 'faq_topics', $term_args );
 
@@ -196,7 +187,7 @@
 
 		} else {
 			$content .= '<div class="sugar-faqs-wrap">';
-			$faqs = get_posts( 'posts_per_page=-1&post_type=faqs&faq_topics=' . $topic . '&orderby=' . $sf_options['order'] . '&order=' . $sf_options['direction'] );
+			$faqs = get_posts( 'posts_per_page=-1&post_type=faqs&faq_topics=' . $atts['topic'] . '&orderby=' . $sf_options['order'] . '&order=' . $sf_options['direction'] );
 			global $post;
 			$temp = $post;
 
