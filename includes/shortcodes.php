@@ -104,15 +104,24 @@
 
 		} elseif ( $atts['topicalize'] == 'true' && $atts['hierarchical'] == 'true' ) {
 
+			global $post;
+
+			$temp = $post;
+
 			if ( 'true' == $atts['accordion'] ) $content .= '<div class="sugar-faqs-wrap">';
 
-			$topic_id  = get_term_by( 'slug', $atts['topic'], 'faq_topics' );
-			$term_args = array( 'child_of' => $topic_id->term_id );
-			$terms     = get_terms( 'faq_topics', $term_args );
+			$topic_id = get_term_by( 'slug', $atts['topic'], 'faq_topics' );
 
-			if ( ! empty( $terms ) ):
+			$term_query_args = array(
+				'taxonomy' => 'faq_topics',
+				'child_of' => $topic_id->term_id,
+			);
 
-				foreach ( $terms as $i => $term ):
+			$taxonomy = new WP_Term_Query( $term_query_args );
+
+			if ( ! empty( $taxonomy->terms ) ) {
+
+				foreach ( $taxonomy->terms as $term ) {
 
 					$content .= sprintf(
 						'<%1$s class="faq-topic">%2$s</%1$s>',
@@ -120,13 +129,32 @@
 						esc_html( $term->name )
 					);
 
-					$faqs = get_posts( 'posts_per_page=-1&post_type=faqs&faq_topics=' . $term->slug . '&orderby=' . $sf_options['order'] . '&order=' . $sf_options['direction'] );
-					global $post;
-					$temp = $post;
+					// $faqs = get_posts( 'posts_per_page=-1&post_type=faqs&faq_topics=' . $term->slug . '&orderby=' . $sf_options['order'] . '&order=' . $sf_options['direction'] );
 
-					if ( $faqs ) :
+					$faq_query_args = array(
+						'post_status'      => 'publish',
+						'post_type'        => 'faqs',
+						'posts_per_page'   => -1,
+						'tax_query'        => array(
+							array(
+								'taxonomy' => 'faq_topics',
+								'terms'    => $term->term_id,
+								'field'    => 'term_id',
+								'operator' => 'IN',
+							),
+						),
+						'orderby'          => $sf_options['order'],
+						'order'            => $sf_options['direction'],
+						'suppress_filters' => true,
+					);
 
-						foreach ( $faqs as $post ) : setup_postdata( $post );
+					$faqs = new WP_Query( $faq_query_args );
+
+					if ( $faqs->posts ) {
+
+						foreach ( $faqs->posts as $post ) {
+
+							setup_postdata( $post );
 
 							if ( 'true' == $atts['accordion'] ) $content .= '<div class="faq-section ' . $faqs_color . '">';
 
@@ -177,13 +205,14 @@
 								$content .= '</p>';
 								if ( 'true' == $atts['accordion'] ) $content .= '</div>'; /* /.faq-content */
 							if ( 'true' == $atts['accordion'] ) $content .= '</div>'; /* /.faq-section */
-						endforeach;
-					endif;
-					$post = $temp;
-				endforeach;
-			endif;
+						}
+					}
+				}
+			}
 
 			if ( 'true' == $atts['accordion'] ) $content .= '</div>'; /* /.sugar-faqs-wrap */
+
+			$post = $temp;
 
 		} else {
 			$content .= '<div class="sugar-faqs-wrap">';
