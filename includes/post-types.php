@@ -7,34 +7,39 @@ create the FAQ post type
 function sf_create_post_type() {
 
 	$labels = array(
-		'name' => _x( 'FAQs', 'post type general name' ), // Tip: _x('') is used for localization
-		'singular_name' => _x( 'FAQ', 'post type singular name' ),
-		'add_new' => _x( 'Add New FAQ', 'FAQ' ),
-		'add_new_item' => __( 'Add New FAQ' ),
-		'edit_item' => __( 'Edit FAQ' ),
-		'new_item' => __( 'New FAQ' ),
-		'view_item' => __( 'View FAQ' ),
-		'search_items' => __( 'Search FAQs' ),
-		'not_found' =>  __( 'No FAQs found' ),
+		'name'               => _x( 'FAQs', 'post type general name' ),
+		'singular_name'      => _x( 'FAQ', 'post type singular name' ),
+		'add_new'            => _x( 'Add New FAQ', 'FAQ' ),
+		'add_new_item'       => __( 'Add New FAQ' ),
+		'edit_item'          => __( 'Edit FAQ' ),
+		'new_item'           => __( 'New FAQ' ),
+		'view_item'          => __( 'View FAQ' ),
+		'search_items'       => __( 'Search FAQs' ),
+		'not_found'          => __( 'No FAQs found' ),
 		'not_found_in_trash' => __( 'No FAQs found in Trash' ),
-		'parent_item_colon' => ''
+		'parent_item_colon'  => '',
 	);
 
- 	$faq_args = array(
-     	'labels' =>$labels,
-     	'singular_label' => __('FAQ'),
-     	'public' => true,
-     	'show_ui' => true,
-	  	'capability_type' => 'post',
-     	'hierarchical' => false,
-     	'rewrite' => array('slug' => 'faqs'),
-     	'has_archive' => true,
-     	'supports' => array('title', 'editor', 'revisions', 'comments'),
-		'menu_position' => 25
-     );
- 	register_post_type('faqs',$faq_args);
+	$supports = array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'revisions', 'page-attributes', 'custom-fields' );
+
+	$faq_args = array(
+		'labels'          => $labels,
+		'singular_label'  => __( 'FAQ' ),
+		'public'          => true,
+		'show_ui'         => true,
+		'capability_type' => 'post',
+		'has_archive'     => true,
+		'hierarchical'    => false,
+		'rewrite'         => array( 'slug' => 'faqs' ),
+		'supports'        => $supports,
+		'menu_position'   => 25,
+		'show_in_rest'   => true,
+	);
+
+	register_post_type( 'faqs', $faq_args );
 }
-add_action('init', 'sf_create_post_type');
+
+add_action( 'init', 'sf_create_post_type' );
 
 
 // modify FAQ columns
