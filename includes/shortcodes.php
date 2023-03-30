@@ -96,6 +96,9 @@ function sf_display_faqs( $atts, $content = NULL ) {
 						$content .= '</div>';
 						$content .= '</div>';
 					endforeach;
+
+					wp_reset_postdata();
+
 				endif;
 				$post = $temp;
 			endforeach;
@@ -206,6 +209,8 @@ function sf_display_faqs( $atts, $content = NULL ) {
 							if ( 'true' == $atts['accordion'] ) $content .= '</div>'; /* /.faq-content */
 						if ( 'true' == $atts['accordion'] ) $content .= '</div>'; /* /.faq-section */
 					}
+
+					wp_reset_postdata();
 				}
 			}
 		}
@@ -255,6 +260,9 @@ function sf_display_faqs( $atts, $content = NULL ) {
 				$content .= '</div>';
 				$content .= '</div>';
 			endforeach;
+
+			wp_reset_postdata();
+
 		endif;
 		$post = $temp;
 		$content .= '</div>';
