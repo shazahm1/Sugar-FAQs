@@ -132,8 +132,6 @@ function sf_display_faqs( $atts, $content = NULL ) {
 					esc_html( $term->name )
 				);
 
-				// $faqs = get_posts( 'posts_per_page=-1&post_type=faqs&faq_topics=' . $term->slug . '&orderby=' . $sf_options['order'] . '&order=' . $sf_options['direction'] );
-
 				$faq_query_args = array(
 					'post_status'      => 'publish',
 					'post_type'        => 'faqs',
