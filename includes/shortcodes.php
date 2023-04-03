@@ -67,10 +67,10 @@ function sf_display_faqs( $atts, $content = NULL ) {
 						$content .= get_the_title() . '<span class="trigger-end"></span></h3>';
 
 						$content .= '<div class="faq-content">';
-						$wp_syntax_applied = WP_Syntax::beforeFilter( get_the_content() );
-						$wp_syntax_applied = do_shortcode( wptexturize( wpautop( $wp_syntax_applied ) ) );
-						$wp_syntax_applied = WP_Syntax::afterFilter( $wp_syntax_applied );
-						$content .= $wp_syntax_applied;
+						// $wp_syntax_applied = WP_Syntax::beforeFilter( get_the_content() );
+						// $wp_syntax_applied = do_shortcode( wptexturize( wpautop( $wp_syntax_applied ) ) );
+						// $wp_syntax_applied = WP_Syntax::afterFilter( $wp_syntax_applied );
+						$content .= apply_filters( 'the_content', get_the_content() );
 						$content .= '<p style="margin-bottom: 0px; text-align: right;"><a title="Permalink" href="' . get_permalink(
 							) . '">Permalink</a>';
 						$content .= ' | ';
@@ -180,10 +180,10 @@ function sf_display_faqs( $atts, $content = NULL ) {
 
 							if ( 'true' == $atts['accordion'] ) $content .= '<div class="faq-content">';
 
-							$wp_syntax_applied = WP_Syntax::beforeFilter( get_the_content() );
-							$wp_syntax_applied = do_shortcode( wptexturize( wpautop( $wp_syntax_applied ) ) );
-							$wp_syntax_applied = WP_Syntax::afterFilter( $wp_syntax_applied );
-							$content .= $wp_syntax_applied;
+							// $wp_syntax_applied = WP_Syntax::beforeFilter( get_the_content() );
+							// $wp_syntax_applied = do_shortcode( wptexturize( wpautop( $wp_syntax_applied ) ) );
+							// $wp_syntax_applied = WP_Syntax::afterFilter( $wp_syntax_applied );
+							$content .= apply_filters( 'the_content', get_the_content() );
 
 							$content .= '<p style="' . ( 'true' == $atts['accordion'] ? 'margin-bottom: 0px; ' : '' ) . 'text-align: right;"><a title="Permalink" href="' . get_permalink() . '">Permalink</a>';
 							$content .= ' | ';
@@ -233,10 +233,10 @@ function sf_display_faqs( $atts, $content = NULL ) {
 				$content .= get_the_title() . '<span class="trigger-end"></span></h3>';
 
 				$content .= '<div class="faq-content">';
-				$wp_syntax_applied = WP_Syntax::beforeFilter( get_the_content() );
-				$wp_syntax_applied = do_shortcode( wptexturize( wpautop( $wp_syntax_applied ) ) );
-				$wp_syntax_applied = WP_Syntax::afterFilter( $wp_syntax_applied );
-				$content .= $wp_syntax_applied;
+				// $wp_syntax_applied = WP_Syntax::beforeFilter( get_the_content() );
+				// $wp_syntax_applied = do_shortcode( wptexturize( wpautop( $wp_syntax_applied ) ) );
+				// $wp_syntax_applied = WP_Syntax::afterFilter( $wp_syntax_applied );
+				$content .= apply_filters( 'the_content', get_the_content() );
 				$content .= '<p style="margin-bottom: 0px; text-align: right;"><a title="Permalink" href="' . get_permalink() . '">Permalink</a>';$content .= ' | ';
 
 				$num_comments = get_comments_number(); // get_comments_number returns only a numeric value
