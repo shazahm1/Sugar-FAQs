@@ -23,5 +23,6 @@ function sf_create_taxonomies() {
 		'labels'       => $topic_labels,
 		'query_var'    => true,
 		'rewrite'      => array( 'slug' => 'faq-topics' ),
+		'show_in_rest' => true, // add support for Gutenberg editor
 	) );
 }
